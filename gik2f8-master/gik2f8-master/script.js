@@ -51,3 +51,19 @@ function renderBookList(bookList){
  
 }
 
+
+/* document.body.addEventListener('mouseover', (e) => 
+hoverCreateElement(e.target));
+ */
+function elementFromHtml(html){
+    const template = document.createElement("template");
+    
+    return template.content.firstElementChild;
+}
+
+
+
+   
+
+/* document.body.addEventListener('mouseover',() =>document.body.innerText='Mouse Enter');
+document.body.addEventListener('mouseleave',() =>document.body.innerText='Mouse leave'); */
