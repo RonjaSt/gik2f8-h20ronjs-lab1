@@ -43,24 +43,28 @@ function renderBookList(bookList){
  }
 
 
-/* document.body.addEventListener('mouseover', (e) => hoverAddElement(myDiv));(
+document.body.addEventListener('mouseover', (e) => 
+hoverAddElement());
   
     
-  );  */
+var myDiv = document.createElement('div');
  
-  function hoverAddElement(myDiv) {
-    var myDiv = document.createElement('div');
-    document.body.appendChild.getElementsByName(myDiv)
-    div.id='myDiv';
-
-    div.mouseover =function(){ for(let i = 0; i < bookDetail.length; i++){
-      console.log(bookDetail[i]);
-       document.getElementsById("myDiv").innerHTML = myDiv;
-    }}
+  
+    
+   myDiv.mouseover =function hoverAddElement(){ 
+      for(i=0; i<5; i++){
+        theData.onmouseover = function() { return get(i);}
+        }
+        console.log(bookDetail[i]);
+        document.getElementsById("myDiv").innerHTML = myDiv;
+        document.body.appendChild.getElementsByName(myDiv)
+        return HTML;
+      
+    }
    
     
    
-   }
+   
 /* function hoverRemoveElement() {
     const existingElement = document.getElementById('bookDetail');
     existingElement.remove();
