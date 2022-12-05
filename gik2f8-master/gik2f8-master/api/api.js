@@ -8,3 +8,15 @@ async function getAll(){
     return result;
 } 
 
+async function getApi(url) {
+    // Storing response
+    const response = await fetch(url);
+
+    // Storing data in form of JSON
+    var data = await response.json()
+    .catch ((e)=>e);
+    return data;
+}
+
+    
+// Call

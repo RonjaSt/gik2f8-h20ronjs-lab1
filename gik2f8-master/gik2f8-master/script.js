@@ -8,7 +8,9 @@ window.addEventListener("load", () =>{
     getAll().then((apiBooks) => (bookList = apiBooks));
 });
 
-
+window.addEventListener("load", () =>{
+  getApi().then((apiBooks) => (bookDetail = apiBooks));
+});
 
 searchField.addEventListener('keyup', (e) =>
   renderBookList(
@@ -38,21 +40,27 @@ function renderBookList(bookList){
     existingElement && root.removeChild(existingElement);
     bookList.length > 0 && searchField.value && root.insertAdjacentHTML('beforeend', BookList(bookList));
  
-}
-document.body.addEventListener('mouseover', (e) => getDetails(
-  bookList.filter(({id, title, author, coverImage , pages, releasedate})=>{
-    return(
-      id||title.indexOf(searchTerm.toLowerCase())>=0|| author.indexOf(searchTerm.toLowerCase())>=0|| coverImage|| pages ||releasedate 
+ }
 
-      );
-    })
+
+/* document.body.addEventListener('mouseover', (e) => hoverAddElement(myDiv));(
+  
     
-  )
+  );  */
+ 
+  function hoverAddElement(myDiv) {
+    var myDiv = document.createElement('div');
+    document.body.appendChild.getElementsByName(myDiv)
+    div.id='myDiv';
 
-);
-
-
-
+    div.mouseover =function(){ for(let i = 0; i < bookDetail.length; i++){
+      console.log(bookDetail[i]);
+       document.getElementsById("myDiv").innerHTML = myDiv;
+    }}
+   
+    
+   
+   }
 /* function hoverRemoveElement() {
     const existingElement = document.getElementById('bookDetail');
     existingElement.remove();
