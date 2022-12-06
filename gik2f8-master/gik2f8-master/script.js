@@ -39,11 +39,19 @@ function renderBookList(bookList){
     
     existingElement && root.removeChild(existingElement);
     bookList.length > 0 && searchField.value && root.insertAdjacentHTML('beforeend', BookList(bookList));
- 
+
+
+    for(let bookId of document.getElementsByClassName("book-list__item")){
+      bookId.addEventListener("mouseover", (e) => (
+        console.log("Id: "+ bookId.getAttribute('ID'))
+        
+        ));
+      
+    }
  }
 
 
-document.body.addEventListener('mouseover', (e) => 
+/* document.body.addEventListener('mouseover', (e) => 
 hoverAddElement());
   
     
@@ -61,7 +69,7 @@ var myDiv = document.createElement('div');
         return HTML;
       
     }
-   
+    */
     
    
    
