@@ -9,7 +9,7 @@ window.addEventListener("load", () =>{
 });
 
 window.addEventListener("load", () =>{
-  getApi().then((apiBooks) => (bookDetail = apiBooks));
+  getAll().then((apiBooks) => (bookDetail = apiBooks));
 });
 
 searchField.addEventListener('keyup', (e) =>
@@ -41,13 +41,16 @@ function renderBookList(bookList){
     bookList.length > 0 && searchField.value && root.insertAdjacentHTML('beforeend', BookList(bookList));
 
 
-    for(let bookId of document.getElementsByClassName("book-list__item")){
-      bookId.addEventListener("mouseover", (e) => (
-        console.log("Id: "+ bookId.getAttribute('ID'))
+    for(let bookId of document.getElementsByClassName("book-list__item")) {
+      bookId.addEventListener("mouseover", (e) => {
         
-        ));
-      
-    }
+       
+        let bookDetails=` <div class=" mb-2 mx-2 last:mb-0 p-3 text-amber-500 last:border-b-0 border-b border-zinc-700 cursor-pointer" ${bookId.getAttribute('ID')}-${bookId.getAttribute("Author")}
+        -${bookId.getAttribute("Title")}-${bookId.getAttribute("CoverImg")}-${bookId.getAttribute("Pages")}-${bookId.getAttribute("Date")}>
+        ${bookId.getAttribute("Title")} - ${bookId.getAttribute('ID')} -${bookId.getAttribute("Author")}-${bookId.getAttribute("CoverImg")}-${bookId.getAttribute("Pages")}-${bookId.getAttribute("Date")}</div>` 
+         root.insertAdjacentHTML('beforeend', (bookDetails));
+      }
+      )}
  }
 
 
