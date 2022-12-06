@@ -44,13 +44,22 @@ function renderBookList(bookList){
     for(let bookId of document.getElementsByClassName("book-list__item")) {
       bookId.addEventListener("mouseover", (e) => {
         
-       
-        let bookDetails=` <div class=" mb-2 mx-2 last:mb-0 p-3 text-amber-500 last:border-b-0 border-b border-zinc-700 cursor-pointer" ${bookId.getAttribute('ID')}-${bookId.getAttribute("Author")}
-        -${bookId.getAttribute("Title")}-${bookId.getAttribute("CoverImg")}-${bookId.getAttribute("Pages")}-${bookId.getAttribute("Date")}>
-        ${bookId.getAttribute("Title")} - ${bookId.getAttribute('ID')} -${bookId.getAttribute("Author")}-${bookId.getAttribute("CoverImg")}-${bookId.getAttribute("Pages")}-${bookId.getAttribute("Date")}</div>` 
-         root.insertAdjacentHTML('beforeend', (bookDetails));
+        let bookDetails =` <div ID="idbookdetails" class=" mb-2 mx-2 last:mb-0 p-3 text-amber-500 last:border-b-0 border-b border-zinc-700 cursor-pointer" ${bookId.getAttribute('ID')}-${bookId.getAttribute("Author")}
+        -${bookId.getAttribute("Title")}-${bookId.getAttribute("Pages")}-${bookId.getAttribute("Date")}>
+        ${bookId.getAttribute("Title")} - ${bookId.getAttribute('ID')} -${bookId.getAttribute("Author")}-${bookId.getAttribute("CoverImg")}-${bookId.getAttribute("Pages")}-${bookId.getAttribute("Date")}
+        <img src="${bookId.getAttribute("CoverImg")}" alt="bild saknas" width="50" height="60">
+        </div>` 
+      
+        
+        root.insertAdjacentHTML('beforeend', (bookDetails));
       }
-      )}
+        
+      )
+    bookId.addEventListener("mouseleave",(e) =>{
+      console.log("mouseout")
+      document.getElementById("idbookdetails").remove();
+        }
+        )}
  }
 
 
