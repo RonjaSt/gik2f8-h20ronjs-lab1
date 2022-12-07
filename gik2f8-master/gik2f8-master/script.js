@@ -3,13 +3,10 @@
 
 
 let bookList = [];
-let bookDetail=[]
-window.addEventListener("load", () =>{
-    getAll().then((apiBooks) => (bookList = apiBooks));
-});
+let book;
 
-window.addEventListener("load", () =>{
-  getAll().then((apiBooks) => (bookDetail = apiBooks));
+window.addEventListener('load', () => {
+  getAll().then((apiBooks) => (bookList = apiBooks));
 });
 
 searchField.addEventListener('keyup', (e) =>
@@ -28,7 +25,17 @@ searchField.addEventListener('keyup', (e) =>
 
 
 
+function showDetails(bookId){
+  let bookInfo =` <div ID="deletingElement" class=" mb-2 mx-2 last:mb-0 p-3 text-amber-500 last:border-b-0 border-b border-zinc-700 cursor-pointer absolute pointer-events-none">
+${bookId.title} - ${bookId.id} -${bookId.author}-${bookId.pages}-${bookId.releaseDate}
+<img src="${bookId.coverImage}" alt="bild saknas" width="50" height="60">
+</div>` 
 
+root.insertAdjacentHTML('beforebegin', (bookInfo));
+
+
+
+}
 function renderBookList(bookList){
     
   
@@ -44,63 +51,22 @@ function renderBookList(bookList){
     for(let bookId of document.getElementsByClassName("book-list__item")) {
       bookId.addEventListener("mouseover", (e) => {
         
-        let bookDetails =` <div ID="idbookdetails" class=" mb-2 mx-2 last:mb-0 p-3 text-amber-500 last:border-b-0 border-b border-zinc-700 cursor-pointer" ${bookId.getAttribute('ID')}-${bookId.getAttribute("Author")}
-        -${bookId.getAttribute("Title")}-${bookId.getAttribute("Pages")}-${bookId.getAttribute("Date")}>
-        ${bookId.getAttribute("Title")} - ${bookId.getAttribute('ID')} -${bookId.getAttribute("Author")}-${bookId.getAttribute("CoverImg")}-${bookId.getAttribute("Pages")}-${bookId.getAttribute("Date")}
-        <img src="${bookId.getAttribute("CoverImg")}" alt="bild saknas" width="50" height="60">
-        </div>` 
-      
+        getBookById(bookId.getAttribute("ID")).then((apiBooks) => (book = apiBooks));{
+          console.log(book)
+          
         
-        root.insertAdjacentHTML('beforeend', (bookDetails));
+        }
+        
+     
       }
-        
-      )
-    bookId.addEventListener("mouseleave",(e) =>{
-      console.log("mouseout")
-      document.getElementById("idbookdetails").remove();
-        }
-        )}
- }
-
-
-/* document.body.addEventListener('mouseover', (e) => 
-hoverAddElement());
-  
-    
-var myDiv = document.createElement('div');
- 
-  
-    
-   myDiv.mouseover =function hoverAddElement(){ 
-      for(i=0; i<5; i++){
-        theData.onmouseover = function() { return get(i);}
-        }
-        console.log(bookDetail[i]);
-        document.getElementsById("myDiv").innerHTML = myDiv;
-        document.body.appendChild.getElementsByName(myDiv)
-        return HTML;
       
-    }
-    */
+      )
     
    
-   
-/* function hoverRemoveElement() {
-    const existingElement = document.getElementById('bookDetail');
-    existingElement.remove();
-} */
-/* document.body.addEventListener('mouseover', (e) => 
-hoverCreateElement(e.target));
- */
-/* function elementFromHtml(html){
-    const template = document.createElement("template");
-    
-    return template.content.firstElementChild;
-}
- */
-
-
-   
-
-/* document.body.addEventListener('mouseover',() =>document.body.innerText='Mouse Enter');
-document.body.addEventListener('mouseleave',() =>document.body.innerText='Mouse leave'); */
+    bookId.addEventListener("mouseout",(e) =>{
+     
+      document.getElementById("deletingElement").remove();
+      
+        })
+        }
+ }
